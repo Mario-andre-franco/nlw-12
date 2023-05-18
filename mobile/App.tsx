@@ -13,6 +13,7 @@ import blurBg from './src/assets/bg-blur.png'
 import Stripes from './src/assets/stripes.svg'
 import NLWLogo from './src/assets/nlw-spacetime-logo.svg'
 import { styled } from 'nativewind'
+import React from 'react'
 
 const StyledStripes = styled(Stripes)
 
@@ -38,7 +39,7 @@ export default function App() {
       <View className="flex-1 items-center justify-center gap-6">
         <NLWLogo />
 
-        <View className="space-y-2">
+        <View className="space-y-2">S
           <Text className="text-center font-title text-2xl leading-tight text-gray-50">
             Sua cápsula do tempo
           </Text>
