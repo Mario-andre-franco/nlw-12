@@ -1,39 +1,40 @@
 'use client'
 
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useState } from 'react'
 
 export function MediaPicker() {
+  const [preview, setPreview] = useState<string | null>(null)
 
-    const [preview, setPreview] = useState<string | null>(null)
+  function onFileSelected(event: ChangeEvent<HTMLInputElement>) {
+    const { files } = event.target
 
-    function onFileSelected(event:ChangeEvent<HTMLInputElement>) {
-
-        const { files } = event.target
-
-        if(!files) {
-            return
-        }
-
-        const previewUrl = URL.createObjectURL(files[0])
-
-        setPreview(previewUrl)
-
-
+    if (!files) {
+      return
     }
-    return (
-        <>
-            <input 
-            onChange={(value) => console.log(value)}
-            type="file"
-            id="media"
-            name="coverUrl"
-            accept="image/*"
-            className="invisible h-0 w-0"
-            />
 
-          {preview && <img src={preview} alt="" className="w-full aspect-video rounded-lg object-cover"
-          />}  
-        </>
+    const previewUrl = URL.createObjectURL(files[0])
 
-    )
+    setPreview(previewUrl)
+  }
+  return (
+    <>
+      <input
+        onChange={onFileSelected}
+        type="file"
+        id="media"
+        name="coverUrl"
+        accept="image/*"
+        className="invisible h-0 w-0"
+      />
+
+      {preview && (
+        // eslint-disable-next-line
+        <img
+          src={preview}
+          alt=""
+          className="aspect-video w-full rounded-lg object-cover"
+        />
+      )}
+    </>
+  )
 }
